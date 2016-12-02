@@ -24,8 +24,8 @@ import time
 #sys.setdefaultencoding('utf-8')
 
 mail_host = 'smtp.126.com' #发送邮件的smtp地址
-mail_user = 'huibeyond@126.com' # 发送通知邮件的用户名
-mail_pass = 'able6430186' # 用户的密码
+mail_user = 'hui@126.com' # 发送通知邮件的用户名
+mail_pass = 'XXX' # 用户的密码
 
 sender_name = 'Able' #发邮件者姓名
 sender_addr = 'huibeyond@126.com' # 发邮件人的邮箱地址
