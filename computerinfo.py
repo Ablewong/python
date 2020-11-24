@@ -8,20 +8,20 @@ from pathlib import Path
 import xlwings as xw
 
 
-info_dict={}
+info_dict={}  #把所有电脑信息存到这个字典中。
 count=0
 
 def walk_dir(dir,topdown=False):
     for root, dirs, files in os.walk(dir, topdown):
         
         for name in files:
-            countdict={'Model':''}
+            countdict={'Model':''}      #定义个空硬盘信息字典
             catinfo = open(os.path.join(root,name), 'r')    #打开个人文件
             hardwarename = ['   Processor', 'OS Memory', 'File System', 'Monitor Model', '          Card name',]
             #fileinfo.write(os.path.join(name).strip() + '\n')
             for readline in catinfo:
                 for hard in hardwarename:
-                    if hard == '   Processor' and hard in readline:  #把CPU简化，只需知道型号就行。
+                    if hard == '   Processor' and hard in readline:  #这段是把CPU简化，只需知道型号就行。
                         cpu = (readline.strip().split(":")[-1]).strip()     #把CPU提取出来
                         if 'Intel' in cpu:
                             countdict[hard.strip()] =  ' '.join((cpu.split('CPU')[0]).split(' '))
@@ -61,7 +61,7 @@ def wirte_xls(comdict):
         print(count1,keys)
         
         sht.range('A'+str(count1)).value = [count1,keys,'',comdict[keys]['Processor'],comdict[keys]['OS Memory'],comdict[keys]['Model'],comdict[keys]['Monitor Model'],comdict[keys]['Card name'],'']   #把每个人的配置写到excle里。
-
+        #第二个空为部门，部门信息需要自己定义，每个公司不一样，就不填上去了。
     wb.save("computercollect2020v5.xls")  #保存excel名字
     wb.close()      #关闭sh
     app.quit()      #退出
