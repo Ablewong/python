@@ -1,7 +1,12 @@
 # encoding:utf-8
 
 __author__ = 'Able'
+'''
+systeminfo.py 的升级版本，主要用来把公司电脑信息收集分类写到一个excel中。
+执行前需要把公司每个电脑的dxdiag信息采集到D:/Work/computercollect/20201119目录(当然这个可以改)，
+dxdiag信息收集可以执行‘ start dxdiag.exe ’内容的BAT文件。然后保存电脑使用人员的名字(这个很重要，我用这名字来写入到EXCEL)给到你那个目录。
 
+'''
 import os
 import os.path
 from pathlib import Path
